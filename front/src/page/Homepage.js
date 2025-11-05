@@ -1,9 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const Homepage = () => {
-	let {id} = useParams();
-	console.log(id);
+	const [searchParams,setSearchParams] = useSearchParams();
+	console.log(searchParams.get("uid"));
 
 	return (
 		<div>
@@ -14,4 +14,4 @@ const Homepage = () => {
 
 export default Homepage;
 
-//링크에 /id값을 넣어주면 콘솔에 출력됨
+//링크에 /?uid=값을 넣어주면 콘솔에 출력됨
