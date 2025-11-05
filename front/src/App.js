@@ -1,23 +1,15 @@
-import styled from "styled-components";
-
-const Box = styled.div`
-	width:100px;
-	height:100px;
-	background-color:green;
-	border-radius:8px;
-	
-	p{
-	color:red;
-	}
-`
+import { Route, Routes } from 'react-router-dom';
+import Homepage from './page/Homepage.js';
+import LoginPage from './page/LoginPage.js';
 
 function App() {
 
 	return(
 		<>
-			<Box>
-				<p>asdf</p>
-			</Box>
+			<Routes>
+				<Route path='/' element={<Homepage/>}></Route>
+				<Route path='/login' element={<LoginPage/>}></Route>
+			</Routes>
 		</>
 	);
 }
