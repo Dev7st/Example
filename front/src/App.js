@@ -1,26 +1,31 @@
-import { createContext, useState } from "react";
-import HomePage from "./page/Homepage";
-
-export const Context = createContext();
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function App() {
-	const [user,setUser] = useState({
-		isLogin:false
-	});
-
-	const value = {
-		state : {
-			user:user
-		},
-		actions:{
-			setUser:setUser
+	const [aa,setAa] = useState([
+		{
+			userId: 0,
+			id: 0,
+			title:"",
+			body:""
 		}
-	}
+	]);
+
+	useEffect(() => {
+		axios.get('https://jsonplaceholder.typicode.com/posts')
+		.then((resp) => {
+			setAa(resp.data);
+		});
+	},[])
+
+	const postList = aa.map((data) => {
+		return <p key={data.id}>{data.title}</p>
+	})
 
 	return(
-		<Context.Provider value={value}>
-			<HomePage></HomePage>
-		</Context.Provider>
+		<>
+			{postList}
+		</>
 	);
 }
 
