@@ -1,16 +1,26 @@
-import { Route, Routes } from 'react-router-dom';
-import Homepage from './page/Homepage.js';
-import LoginPage from './page/LoginPage.js';
+import { createContext, useState } from "react";
+import HomePage from "./page/Homepage";
+
+export const Context = createContext();
 
 function App() {
+	const [user,setUser] = useState({
+		isLogin:false
+	});
+
+	const value = {
+		state : {
+			user:user
+		},
+		actions:{
+			setUser:setUser
+		}
+	}
 
 	return(
-		<>
-			<Routes>
-				<Route path='/' element={<Homepage/>}></Route>
-				<Route path='/login' element={<LoginPage/>}></Route>
-			</Routes>
-		</>
+		<Context.Provider value={value}>
+			<HomePage></HomePage>
+		</Context.Provider>
 	);
 }
 
