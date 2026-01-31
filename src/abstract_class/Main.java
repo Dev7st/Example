@@ -1,0 +1,8 @@
+package abstract_class;
+
+public class Main {
+    public static void main(String[] args) {
+        Down down = new Down();
+        down.execute();
+    }
+}
