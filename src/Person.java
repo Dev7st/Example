@@ -1,4 +1,6 @@
-public class Person implements Comparable<Person>{
+import java.util.Comparator;
+
+public class Person implements Comparator<Person> {
     private int userUid;
 
     public int getUserUid() {
@@ -9,7 +11,7 @@ public class Person implements Comparable<Person>{
     }
 
     @Override
-    public int compareTo(Person o) {
-        return this.userUid - o.userUid;
+    public int compare(Person o1, Person o2) {
+        return o1.userUid - o2.userUid;
     }
 }
