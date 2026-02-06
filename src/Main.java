@@ -1,18 +1,22 @@
-import java.util.TreeSet;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-            // 더미 데이터를 넣어 가이드 제공
-            TreeSet<Person> people = new TreeSet<>(new Person(0));
+        long startTime = System.currentTimeMillis();
 
-            // 실제 데이터를 추가하고 정렬
-            people.add(new Person(1));
-            people.add(new Person(4));
-            people.add(new Person(2));
-            people.add(new Person(3));
+        try(FileInputStream fileInputStream = new FileInputStream("index.txt");
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+            FileOutputStream fileOutputStream = new FileOutputStream("output.txt");
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream)){
+            int i;
+            while ((i= bufferedInputStream.read()) !=-1){
+                bufferedOutputStream.write(i);
+            }
+        } catch (IOException e){
 
-            for(Person uid : people) {
-                System.out.println(uid.getUserUid());
         }
+
+        long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
     }
 }
